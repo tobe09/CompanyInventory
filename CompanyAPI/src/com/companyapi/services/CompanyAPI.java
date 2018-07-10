@@ -22,6 +22,15 @@ public class CompanyAPI extends ServiceAPI {
 	}
 
 	@GET
+	@Path("/getTest")
+	@Consumes(MediaType.APPLICATION_XML)
+	public String getTest(@QueryParam("name") String name, @QueryParam("address") String address, @QueryParam("type") String type){
+		
+		Company company = new Company(name, address, type);
+		return gson.toJson(company);
+	}
+
+	@GET
 	@Path("/getCompanyOrNull")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public String getCompanyOrNull(@QueryParam("compName") String compName){
